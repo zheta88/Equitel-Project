@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MotoresService } from '../motores.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-table',
@@ -7,11 +8,14 @@ import { MotoresService } from '../motores.service';
   styleUrls: ['./table.component.css']
 })
 export class TableComponent implements OnInit {
+
+  isMotorAdded = false;
   motores: any;
   page: any;
   showMotores: Array<any> = [];
 
-  constructor(public MotoresService: MotoresService) { }
+  constructor(public MotoresService: MotoresService, private route: ActivatedRoute,
+  private router: Router) { }
 
   ngOnInit(){
 
@@ -19,6 +23,15 @@ export class TableComponent implements OnInit {
       this.motores = data;
       this.page="";
     })
+   
   }
 
+  deleteMotor(id_motor: any): void {
+    if (confirm("está seguro de querer eliminar el registro " + id_motor + "?")){
+       this.MotoresService.delete(id_motor).subscribe((res) => console.log(res));
+    }
+   }
+
+ 
+  
 }
