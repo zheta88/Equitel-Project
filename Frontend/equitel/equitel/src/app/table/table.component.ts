@@ -32,6 +32,7 @@ export class TableComponent implements OnInit {
   //   }
   //  }
   deleteMotor(id_motor: any){
+    if(confirm("Está seguro de eliminar el "+id_motor +" registro? "))
     this.MotoresService.delete(id_motor)
     .subscribe(
       response => {
