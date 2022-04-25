@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Equitel\\Equitel\\Equitel\\Equitel.csproj": {}
+    "C:\\Equitel-Project\\Backend\\Equitel\\Equitel\\Equitel.csproj": {}
   },
   "projects": {
-    "C:\\Equitel\\Equitel\\Equitel\\Equitel.csproj": {
+    "C:\\Equitel-Project\\Backend\\Equitel\\Equitel\\Equitel.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Equitel\\Equitel\\Equitel\\Equitel.csproj",
+        "projectUniqueName": "C:\\Equitel-Project\\Backend\\Equitel\\Equitel\\Equitel.csproj",
         "projectName": "Equitel",
-        "projectPath": "C:\\Equitel\\Equitel\\Equitel\\Equitel.csproj",
+        "projectPath": "C:\\Equitel-Project\\Backend\\Equitel\\Equitel\\Equitel.csproj",
         "packagesPath": "C:\\Users\\cmedina\\.nuget\\packages\\",
-        "outputPath": "C:\\Equitel\\Equitel\\Equitel\\obj\\",
+        "outputPath": "C:\\Equitel-Project\\Backend\\Equitel\\Equitel\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\cmedina\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -43,6 +43,10 @@
             "Dapper": {
               "target": "Package",
               "version": "[2.0.123, )"
+            },
+            "Microsoft.AspNet.WebApi.Cors": {
+              "target": "Package",
+              "version": "[5.2.8, )"
             },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
