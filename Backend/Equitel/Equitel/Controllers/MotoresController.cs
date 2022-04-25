@@ -46,16 +46,29 @@ namespace Equitel.Controllers
             return Ok(result);
         }
 
-        [HttpDelete]
-        public IActionResult Delete(Models.Motores model)
+        //[HttpDelete("{id_motor}")]
+        //public IActionResult Delete(int id_motor)
+        //{
+        //   MotoresController result = new resultado
+        //    using (var db = new SqlConnection(conn))
+        //    {
+        //        var sql = "DELETE from motores WHERE id_motor= @id_motor";
+        //        result = db.Execute(sql, id_motor);
+        //    }
+        //    return Ok(result);
+        //}
+        // DELETE api/aircraft/id
+        [HttpDelete("{id_motor}")]
+        public async Task<IActionResult> Delete(int id_motor)
         {
-            int result = 0;
-            using (var db = new SqlConnection(conn))
+
+            using (var connection = new SqlConnection(conn))
             {
-                var sql = "DELETE from motores WHERE id_motor= @id_motor";
-                result = db.Execute(sql, model);
+                await connection.OpenAsync();
+                var sqlStatement = "DELETE motores WHERE id_motor = @id_motor";
+                await connection.ExecuteAsync(sqlStatement, new { id_motor = id_motor });
             }
-            return Ok(result);
+            return Ok();
         }
 
     }

@@ -26,11 +26,21 @@ export class TableComponent implements OnInit {
    
   }
 
-  deleteMotor(id_motor: any): void {
-    if (confirm("está seguro de querer eliminar el registro " + id_motor + "?")){
-       this.MotoresService.delete(id_motor).subscribe((res) => console.log(res));
-    }
-   }
+  // deleteMotor(id_motor: any): void {
+  //   if (confirm("está seguro de querer eliminar el registro " + id_motor + "?")){
+  //      this.MotoresService.delete(id_motor).subscribe((res) => console.log(res));
+  //   }
+  //  }
+  deleteMotor(id_motor: any){
+    this.MotoresService.delete(id_motor)
+    .subscribe(
+      response => {
+        this.MotoresService.getMotores();
+      },
+      error => {
+        console.log(error);
+      });
+  }
 
  
   

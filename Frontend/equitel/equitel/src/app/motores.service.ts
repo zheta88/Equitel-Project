@@ -39,8 +39,8 @@ create(data: any): Observable<any> {
  
 }
 
-delete(id_motor : any){
-return this.http.delete(`${this.Url}/${id_motor}`,this.httpOptions)
+delete(id_motor: any): Observable<any> {
+  return this.http.delete(`${this.Url}/${id_motor}`,this.httpOptions)
 }
 
 
