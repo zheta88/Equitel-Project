@@ -1,4 +1,5 @@
 import { Component, Inject, Optional } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { MotoresService } from '../motores.service';
 
 
@@ -17,11 +18,29 @@ export class FormComponent {
   };
   isMotorAdded = false;
   motores: any;
-  constructor(public MotoresService: MotoresService) { }
+  currentMotor: any;
+  constructor(public MotoresService: MotoresService,private activatedRoute:ActivatedRoute) { }
 
   ngOnInit(){
+    this.cargar();
 
   }
+
+  cargar():void{
+    this.activatedRoute.params.subscribe(
+      e=>{
+        let id_motor =e['id_motor'];
+        if(id_motor){
+          this.MotoresService.getMotor(id_motor).subscribe(
+
+            data=>this.motores=data
+          )
+        }
+      }
+    );
+  }
+
+  
   addMotor(): void {
     const data = {
       descripcion_motor: this.motor.descripcion_motor,
@@ -29,7 +48,7 @@ export class FormComponent {
       valor_importacion: this.motor.valor_importacion
     };
     if (!data.descripcion_motor) {
-      alert('Please add motor!');
+      alert('Por favor agrega datos para el motor!');
       return;
     }
 

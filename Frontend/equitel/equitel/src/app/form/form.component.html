@@ -3,13 +3,18 @@
     <div class="card-body">
 <div class="container">
     <div class="submit-form">
-        <div  *ngIf="!isMotorAdded">
+        <div>
             Descripción: <input type="text" name="descripcion_motor" id="descripcion_motor" class="form-control" [(ngModel)]="motor.descripcion_motor">
             Potencia: <input type="text" name="potencia" id="potencia" class="form-control"  [(ngModel)]="motor.potencia">
             Valor Importación: <input type="text" name="valor_importacion" id="valor_importacion" class="form-control" [(ngModel)]="motor.valor_importacion">
-            <button class="btn btn-success" (click)="addMotor()">
+            <button class="btn btn-success" (click)="addMotor()" *ngIf="motor.potencia else elseBlock">
                 Agregar Motor
             </button>
+            <ng-template #elseBlock>
+                <button class="btn btn-success" (click)="cargar()">
+                    Actualizar Motor
+                </button>
+            </ng-template>
         </div>
     </div>
 </div> 

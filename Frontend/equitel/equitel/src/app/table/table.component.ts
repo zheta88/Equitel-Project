@@ -41,7 +41,7 @@ export class TableComponent implements OnInit {
   }
 
   updateMotor(): void {
-    this.MotoresService.update(this.currentMotor.id, this.currentMotor)
+    this.MotoresService.update(this.currentMotor.id_motor, this.currentMotor)
       .subscribe(
         response => {
           console.log(response);

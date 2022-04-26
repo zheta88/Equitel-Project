@@ -46,7 +46,7 @@
             <td>{{ elem['potencia'] }}</td>
             <td>{{ elem['valor_importacion'] }}</td>
             <td class="botones">
-                <button class="btn" [routerLink]="['formulario',elem.id_motor]">
+                <button class="btn" [routerLink]="['/formulario',elem.id_motor]">
                     <img src="../../assets/images/edit.png" width="25px">
                 </button>
                 <button class="btn"  (click)="deleteMotor(elem.id_motor)">
