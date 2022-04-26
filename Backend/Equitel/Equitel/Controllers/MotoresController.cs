@@ -34,16 +34,17 @@ namespace Equitel.Controllers
             }
             return Ok(result);
         }
-        [HttpPut]
-        public IActionResult Edit(Models.Motores model)
+        [HttpPut("{id_motor}")]
+        public async Task<IActionResult> Edit(int id_motor,string descripcion_motor, string potencia,float valor_importacion)
         {
-            int result = 0;
+     
             using (var db = new SqlConnection(conn))
             {
+                await db.OpenAsync();
                 var sql = "UPDATE motores SET descripcion_motor=@descripcion_motor,potencia=@potencia,valor_importacion=@valor_importacion" + " WHERE id_motor=@id_motor";
-                result = db.Execute(sql, model);
+                await db.ExecuteAsync(sql, new {id_motor = id_motor, descripcion_motor = descripcion_motor , potencia = potencia, valor_importacion=valor_importacion});
             }
-            return Ok(result);
+            return Ok();
         }
 
     
@@ -51,11 +52,11 @@ namespace Equitel.Controllers
         public async Task<IActionResult> Delete(int id_motor)
         {
 
-            using (var connection = new SqlConnection(conn))
+            using (var db = new SqlConnection(conn))
             {
-                await connection.OpenAsync();
-                var sqlStatement = "DELETE motores WHERE id_motor = @id_motor";
-                await connection.ExecuteAsync(sqlStatement, new { id_motor = id_motor });
+                await db.OpenAsync();
+                var sql = "DELETE motores WHERE id_motor = @id_motor";
+                await db.ExecuteAsync(sql, new { id_motor = id_motor });
             }
             return Ok();
         }
