@@ -13,6 +13,8 @@ export class TableComponent implements OnInit {
   motores: any;
   page: any;
   showMotores: Array<any> = [];
+  currentMotor: any;
+  message = '';
 
   constructor(public MotoresService: MotoresService, private route: ActivatedRoute,
   private router: Router) { }
@@ -26,11 +28,6 @@ export class TableComponent implements OnInit {
    
   }
 
-  // deleteMotor(id_motor: any): void {
-  //   if (confirm("está seguro de querer eliminar el registro " + id_motor + "?")){
-  //      this.MotoresService.delete(id_motor).subscribe((res) => console.log(res));
-  //   }
-  //  }
   deleteMotor(id_motor: any){
     if(confirm("Está seguro de eliminar el "+id_motor +" registro? "))
     this.MotoresService.delete(id_motor)
@@ -41,6 +38,18 @@ export class TableComponent implements OnInit {
       error => {
         console.log(error);
       });
+  }
+
+  updateMotor(): void {
+    this.MotoresService.update(this.currentMotor.id, this.currentMotor)
+      .subscribe(
+        response => {
+          console.log(response);
+          this.message = 'Motor actualizado correctamente!';
+        },
+        error => {
+          console.log(error);
+        });
   }
 
  

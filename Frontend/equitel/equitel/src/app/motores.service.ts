@@ -43,6 +43,9 @@ delete(id_motor: any): Observable<any> {
   return this.http.delete(`${this.Url}/${id_motor}`,this.httpOptions)
 }
 
-
+update(id: any, data: any): Observable<any> {
+  return this.http.put(`${this.Url}/${id}`, data)
+ 
+}
 
 }

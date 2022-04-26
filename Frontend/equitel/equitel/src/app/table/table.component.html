@@ -39,14 +39,14 @@
         </thead>
         <tbody>
         <tr *ngFor="
-        let elem of motores|
+        let elem of motores |
         paginate: { itemsPerPage: 10, currentPage: page }">
             <td>{{ elem['id_motor'] }}</td>
             <td>{{ elem['descripcion_motor'] }}</td>
             <td>{{ elem['potencia'] }}</td>
             <td>{{ elem['valor_importacion'] }}</td>
             <td class="botones">
-                <button class="btn">
+                <button class="btn" [routerLink]="['formulario',elem.id_motor]">
                     <img src="../../assets/images/edit.png" width="25px">
                 </button>
                 <button class="btn"  (click)="deleteMotor(elem.id_motor)">
